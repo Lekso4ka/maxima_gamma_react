@@ -2,3 +2,19 @@ body {
 	margin: 0;
 	font-family: "Nunito", "Arial", "Helvetica", sans-serif;
 }
+.red {
+	color: red;
+}
+.green {
+	color: forestgreen;
+}
+.blue {
+	color: lightskyblue;
+}
+.caption {
+	font-size: 34px;
+	margin: 0;
+}
+ul {
+	margin: 0;
+}
