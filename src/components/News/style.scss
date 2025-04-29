@@ -1,0 +1,30 @@
+.news-block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    h3 {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+    p {
+        margin: 0;
+        font-size: .6rem;
+    }
+    .news-block__card {
+        width: auto;
+        height: auto;
+        display: block;
+        padding: .5rem;
+        border-radius: .5rem;
+        box-shadow: 0 0 5px 0 silver;
+        display: grid;
+        grid-template-columns: 1fr 100px;
+        gap: .8rem;
+        img {
+            width: 100%;
+            grid-row-end: span 2;
+            align-self: center;
+        }
+    }
+}
