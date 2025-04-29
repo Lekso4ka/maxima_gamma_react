@@ -18,3 +18,16 @@ body {
 ul {
 	margin: 0;
 }
+.card {
+	border: 2px solid #222;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 30px;
+	border-radius: 4px;
+}
+.card-block {
+	display: flex;
+	flex-wrap: wrap;
+}
