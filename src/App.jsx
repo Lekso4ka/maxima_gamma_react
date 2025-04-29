@@ -1,28 +1,11 @@
 import React from "react";
-import {
-    getRandom
-} from "./utils/functions"
 
-const Card = (props) => {
-    const n = "000"//getRandom(1000, 100)
-    return <div className="card">{props.num || n}</div>
-}
+const arr = [0,1,2,undefined,4,2]
+import Card from "./components/Card"
 
 const App = () => {
     return <div className="card-block">
-        <Card/>
-        <Card/>
-        <Card num="345"/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card num={1}/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
+        {arr.map((n, i) => <Card num={n} key={i}/>)}
     </div>
 }
 
