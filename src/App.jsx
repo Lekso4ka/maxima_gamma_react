@@ -1,5 +1,6 @@
 import React from "react";
 import News from "./components/News/News";
+import ColorCard from "./components/ColorCard";
 
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
         <header/>
         <section>
             <News/>
+            <ColorCard/>
         </section>
         <footer/>
     </div>
