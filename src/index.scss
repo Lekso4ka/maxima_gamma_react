@@ -1,11 +1,25 @@
 html {
-	font-size: 20px;
+	font-size: 20px; // 1rem
 }
 
 
 body {
 	margin: 0;
 	font-family: "Nunito", "Arial", "Helvetica", sans-serif;
+}
+header, footer {
+	background-color: #222;
+}
+.wrapper {
+	display: grid;
+	grid-template-rows: 3rem 1fr 1.5rem;
+	min-height: 100vh;
+	&>section {
+		display: grid;
+		align-content: flex-start;
+		gap: 2rem;
+		padding: 2rem;
+	}
 }
 .red {
 	color: red;
