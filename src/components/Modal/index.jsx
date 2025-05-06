@@ -1,20 +1,24 @@
-import React from "react";
+import React, {useContext} from "react";
 import {X} from "react-bootstrap-icons";
+import Ctx from "../../context"
 
 import "./index.scss";
 
 export const Modal = ({
-    isActive, 
-    openModal,
     children
 }) => {
-    return <div class="modal" style={{
-        display: isActive ? "flex" : "none"
+    const {
+        activeModal,
+        setActiveModal
+    } = useContext(Ctx)
+
+    return <div className="modal" style={{
+        display: activeModal ? "flex" : "none"
     }}>
         <div className="modal__container">
             <button 
                 className="modal__close"
-                onClick={() => openModal(false)}
+                onClick={() => setActiveModal(false)}
             >
                 <X/>
             </button> 

@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import {PersonVideo} from "react-bootstrap-icons";
 
-import "./index.scss"
+import Ctx from "../../context";
+import "./index.scss";
 
-export const Header = ({
-    openModal
-}) => {
+export const Header = () => {
+    const { setActiveModal } = useContext(Ctx)
     return <header>
         <div className="logo">MyPrettyPets</div>
         <nav>
@@ -14,6 +14,6 @@ export const Header = ({
             <a href="">link</a>
             <a href="">link</a>
         </nav>
-        <PersonVideo onClick={() => openModal(true)}/>
+        <PersonVideo onClick={() => setActiveModal(true)}/>
     </header>
 }
