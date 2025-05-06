@@ -10,6 +10,7 @@
 	"dependencies": {
 		"core-js": "^3.41.0",
 		"react": "^19.1.0",
+		"react-bootstrap-icons": "^1.11.5",
 		"react-dom": "^19.1.0",
 		"react-router-dom": "^7.5.2"
 	},

@@ -1,0 +1,25 @@
+header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    color: #dedede;
+    padding: 0 2rem;
+    gap: 2rem;
+    .logo {
+        color: burlywood;
+        font-size: 1.5em;
+    }
+    nav {
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        cursor: pointer;
+        &:hover {
+            fill: burlywood;
+        }
+    }
+}
