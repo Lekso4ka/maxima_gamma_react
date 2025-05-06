@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./style.scss";
 
 let store = localStorage.getItem("pets");
@@ -12,7 +12,19 @@ if (!store) {
 
 export const Pets = () => {
     const [name, setName] = useState("");
-    const [arr, setArr] = useState(store)
+    // const [arr, setArr] = useState(store);
+    const [pets, setPets] = useState(null)
+
+    
+
+    useEffect(() => {
+        fetch("https://apijs.ru/api/v2/pets")
+        .then(res => res.json())
+        .then(({data})=> {
+            console.log(data)
+            setPets(data);
+        })
+    }, [])
 
     const addHandler = () => {
         // let pets = arr
@@ -20,7 +32,7 @@ export const Pets = () => {
         // setArr(pets)
         setArr((prev) => {
             prev.push(name)
-            localStorage.setItem("pets", JSON.stringify(prev))
+            // localStorage.setItem("pets", JSON.stringify(prev))
             return prev;
         })
 
@@ -28,7 +40,7 @@ export const Pets = () => {
     }
 
     const delHandler = (index) => {
-        setArr((prev) => {
+        setPets((prev) => {
             const newArr = prev.filter((el, i) => i !== index)
             localStorage.setItem("pets", JSON.stringify(newArr))
             return newArr;
@@ -36,7 +48,7 @@ export const Pets = () => {
     }
 
     return <div className="pets-wrapper">
-        <label>
+        {/* <label>
             <span>Введите имя питомца</span>
             <input 
                 type="text" 
@@ -44,16 +56,18 @@ export const Pets = () => {
                 onChange={(e) => setName(e.target.value)}
             />
             <button onClick={addHandler}>Добавить питомца</button>
-        </label>
+        </label> */}
         <div className="pets-block">
-            {arr.map((el,i) => <div 
+            {pets?.map((el) => <div 
                 className="pets-block__card"
-                key={i}
+                key={el.id}
             >
-                {el}
+                <h3>{el.name}</h3>
+                <p>{el.description}</p>
+                <span>{el.type}</span>
                 <div 
                     className="close"
-                    onClick={() => delHandler(i)}
+                    onClick={() => delHandler(el.id)}
                 />
             </div>)}
         </div>

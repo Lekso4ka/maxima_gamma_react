@@ -1,3 +1,6 @@
+// Жизненный путь компонента
+// https://vk.com/@frontend_practice-zhiznennyi-cikl-komponenta-react
+
 import React from "react";
 import { createRoot } from "react-dom/client";
 

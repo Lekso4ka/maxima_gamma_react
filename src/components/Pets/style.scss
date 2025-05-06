@@ -8,20 +8,33 @@
     }
 }
 .pets-block {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem 2rem;
+    align-items: stretch;
     flex-wrap: wrap;
 }
 .pets-block__card {
     padding: 1rem;
     border: 1px solid silver;
     border-radius: .5rem;
-    display: flex;
-    align-items: center;
+    display: grid;
+    align-items: flex-start;
+    grid-template-rows: auto 1fr auto;
     justify-content: center;
     gap:.5rem;
     position: relative;
+    h3, p {
+        margin: 0;
+    }
+    span {
+        background-color: silver;
+        width: max-content;
+        display: flex;
+        padding: .2rem .5rem;
+        border-radius: .2rem;
+        align-self: flex-end;
+    }
     .close {
         position: absolute;
         top: .3rem;

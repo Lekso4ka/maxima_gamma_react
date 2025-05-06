@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {getRandom} from "../../utils/functions"
+
 
 export const Card2 = ({cardSt}) => {
     const [color, setColor] = useState("rgb(80,80,80)")
@@ -12,6 +13,12 @@ export const Card2 = ({cardSt}) => {
         console.log(clr)
         setColor(clr)
     }
+
+
+    useEffect(() => {
+        colorHandler()
+    }, [])
+
     
     return <div 
         style={{
