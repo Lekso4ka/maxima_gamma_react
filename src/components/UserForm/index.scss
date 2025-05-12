@@ -1,0 +1,65 @@
+.form {
+    display: grid;
+    gap: .8rem;
+    h2 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+}
+
+.form__row {
+    display: grid;
+    gap: .2rem;
+    label {
+        font-size: .8rem;
+        color: grey;
+        cursor: pointer;
+    }
+    input {
+        border: 1px solid silver;
+        height: 1.5rem;
+        border-radius: .5rem;
+        padding: 0 .5rem;
+        &:focus {
+            outline: 2px solid #222;
+        }
+    }
+}
+
+.btn-set {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    button {
+        background-color: silver;
+        color: #fff;
+        border: 1px solid #222;
+        height: 1.5rem;
+        cursor: pointer;
+        &:disabled {
+            opacity: .6;
+            cursor: auto;
+        }
+        &:first-of-type {
+            border-radius: .5rem 0 0 .5rem;
+            border-right: none;
+        }
+        &:last-of-type {
+            border-radius: 0 .5rem .5rem 0;
+        }
+    }
+}
+
+.btn {
+    background-color: transparent;
+    border: 1px solid silver;
+    
+    outline: none;
+    height: 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-wrapper {
+    display: grid;
+    gap: 1rem;
+}

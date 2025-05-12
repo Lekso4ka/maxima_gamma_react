@@ -5,6 +5,7 @@ import {Pets} from "./components/Pets"
 
 import {Header} from "./components/Header"
 import { Modal } from "./components/Modal";
+import { UserForm } from "./components/UserForm";
 
 const App = () => {
     return <div className="wrapper">
@@ -16,8 +17,7 @@ const App = () => {
         </section>
         <footer/>
         <Modal>
-            <h2>Это модалка</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora iusto repellendus nostrum cumque iste, deleniti magnam consequatur ab culpa similique?</p>
+            <UserForm/>
         </Modal>
     </div>
 }

@@ -22,4 +22,9 @@ header {
             fill: burlywood;
         }
     }
+    .user {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
 }
