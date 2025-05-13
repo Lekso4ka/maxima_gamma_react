@@ -13,6 +13,9 @@ header {
         display: flex;
         gap: 1rem;
         justify-content: flex-end;
+        a.active {
+            border-bottom: 1px solid;
+        }
     }
     svg {
         width: 1.5rem;

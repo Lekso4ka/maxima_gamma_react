@@ -4,6 +4,8 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 
+import { BrowserRouter, HashRouter } from "react-router";
+
 import "./index.scss"
 import App from "./App";
 import {Provider} from "./context"
@@ -18,6 +20,8 @@ import {Provider} from "./context"
 */
 
 const root = createRoot(document.getElementById("root"));
-root.render(<Provider>
-    <App/>
-</Provider>)
+root.render(<BrowserRouter>
+    <Provider>
+        <App/>
+    </Provider>
+</BrowserRouter>)

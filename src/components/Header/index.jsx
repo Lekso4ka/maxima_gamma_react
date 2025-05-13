@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import {PersonVideo, BoxArrowLeft} from "react-bootstrap-icons";
+import {Link, NavLink} from "react-router"
 
 import Ctx from "../../context";
 import "./index.scss";
@@ -16,10 +17,8 @@ export const Header = () => {
     return <header>
         <div className="logo">MyPrettyPets</div>
         <nav>
-            <a href="">link</a>
-            <a href="">link</a>
-            <a href="">link</a>
-            <a href="">link</a>
+            <NavLink to="/">Главная</NavLink>
+            <NavLink to="/add">Добавить питомца</NavLink>
         </nav>
         {user
             ? <div className="user">
