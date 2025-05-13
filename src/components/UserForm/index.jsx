@@ -22,7 +22,7 @@ export const UserForm = () => {
         setCPwd("")
     }
 
-    const {setActiveModal, setUser} = useContext(Ctx)
+    const {setActiveModal, setUser, setToken, api} = useContext(Ctx)
 
     const sendForm = (e) => {
         e.preventDefault();
@@ -35,18 +35,9 @@ export const UserForm = () => {
         } else {
             body.user = login
         }
-        const path = `https://apijs.ru/api/v2/${isAuth ? "auth" : "register"}`
 
-        fetch(path, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-        })
-            .then(res => res.json())
+        api.auth(body, isAuth)
             .then(data => {
-                console.log(data)
                 if (data.err) {
                     window.alert(data.msg)
                 } else {
@@ -55,6 +46,7 @@ export const UserForm = () => {
                     localStorage.setItem("token", data.token)
                     setActiveModal(false)
                     setUser(data.user.login)
+                    setToken(data.token)
                 }
                 
             })

@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import "./style.scss";
+import Ctx from "../../context";
 
 let store = localStorage.getItem("pets");
 if (!store) {
@@ -14,17 +15,18 @@ export const Pets = () => {
     const [name, setName] = useState("");
     // const [arr, setArr] = useState(store);
     const [pets, setPets] = useState(null)
+    const {api} = useContext(Ctx)
 
     
 
     useEffect(() => {
-        fetch("https://apijs.ru/api/v2/pets")
-        .then(res => res.json())
-        .then(({data})=> {
-            console.log(data)
-            setPets(data);
-        })
-    }, [])
+        if (api) {
+            api.getPets()
+                .then(({data})=> {
+                    setPets(data);
+                })
+        }
+    }, [api])
 
     const addHandler = () => {
         // let pets = arr
@@ -62,6 +64,7 @@ export const Pets = () => {
                 className="pets-block__card"
                 key={el.id}
             >
+                <div className="pic" style={{backgroundImage: `url(${el.image})`}}/>
                 <h3>{el.name}</h3>
                 <p>{el.description}</p>
                 <span>{el.type}</span>

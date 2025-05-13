@@ -20,12 +20,17 @@
     border-radius: .5rem;
     display: grid;
     align-items: flex-start;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 140px auto 1fr auto;
     justify-content: center;
     gap:.5rem;
     position: relative;
     h3, p {
         margin: 0;
+        align-self: flex-start;
+    }
+    .pic {
+        height: 140px;
+        background: center / cover
     }
     span {
         background-color: silver;
