@@ -28,7 +28,7 @@ export const Header = () => {
         <div className="logo">MyPrettyPets</div>
         <nav>
             <NavLink to="/">Главная</NavLink>
-            <NavLink to="/add">Добавить питомца</NavLink>
+            {user && <NavLink to="/add">Добавить питомца</NavLink>}
         </nav>
         {isLogin
             ? <div className="user">
