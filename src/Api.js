@@ -15,7 +15,6 @@ class Api {
             .then(res => res.json())
     }
     getPets() {
-        console.log("hello")
         if (this.token) {
             return fetch(`${this.path}/pets`, {
                 method: "GET",
@@ -30,7 +29,15 @@ class Api {
         }
     }
     addPet(body) {
-
+        return fetch(`${this.path}/pets`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "Application/json",
+                "Authorization": `Bearer ${this.token}`
+            },
+            body: JSON.stringify(body)
+        })
+        .then(res => res.json())
     }
     showPet(id) {
 

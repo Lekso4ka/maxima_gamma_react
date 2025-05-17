@@ -4,6 +4,7 @@ import {Link, NavLink} from "react-router"
 
 import Ctx from "../../context";
 import "./index.scss";
+import {Button} from "react-bootstrap"
 
 export const Header = () => {
     const [isLogin, setIsLogin] = useState(false)
@@ -27,8 +28,8 @@ export const Header = () => {
     return <header>
         <div className="logo">MyPrettyPets</div>
         <nav>
-            <NavLink to="/">Главная</NavLink>
-            {user && <NavLink to="/add">Добавить питомца</NavLink>}
+            <NavLink to="/" style={{color: "inherit", textDecoration: "none"}}>Главная</NavLink>
+            {user && <NavLink to="/add" style={{color: "inherit", textDecoration: "none"}}>Добавить питомца</NavLink>}
         </nav>
         {isLogin
             ? <div className="user">

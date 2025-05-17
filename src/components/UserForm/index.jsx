@@ -135,7 +135,7 @@ export const UserForm = () => {
                 >{isAuth ? "Войти" : "Зарегистрироваться"}</button>
             </div>
         </form>
-        <button className="btn" onClick={() => setIsAuth(!isAuth)}>
+        <button className=".self-btn" onClick={() => setIsAuth(!isAuth)}>
             {isAuth ? "Зарегистрироваться" : "Войти"}
         </button>
     </div>

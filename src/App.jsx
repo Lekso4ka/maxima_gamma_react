@@ -21,7 +21,7 @@ import { Form } from "./pages/Form";
 */
 
 import { Home, Pet, Form } from "./pages";
-
+import "bootstrap/dist/css/bootstrap.css"
 const App = () => {
     return <div className="wrapper">
         <Header/>
