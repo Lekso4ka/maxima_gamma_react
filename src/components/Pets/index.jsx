@@ -4,6 +4,7 @@ import Ctx from "../../context";
 import { useSelector, useDispatch } from "react-redux";
 
 import {initPets, delPet} from "../../store/Pets";
+import { useNavigate } from "react-router";
 
 let store = localStorage.getItem("pets");
 if (!store) {
@@ -20,6 +21,7 @@ export const Pets = () => {
     const {pets} = useSelector(state => state.pets)
     const {api, setUser, setToken} = useContext(Ctx)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log(pets)
@@ -67,6 +69,7 @@ export const Pets = () => {
             {pets?.map((el) => <div 
                 className="pets-block__card"
                 key={el.id}
+                onClick={() => navigate(`/pet/${el.id}`)}
             >
                 <div className="pic" style={{backgroundImage: `url(${el.image})`}}/>
                 <h3>{el.name}</h3>
@@ -74,7 +77,10 @@ export const Pets = () => {
                 <span>{el.type}</span>
                 <div 
                     className="close"
-                    onClick={() => delHandler(el.id)}
+                    onClick={(e) => {
+                        e.stopPropagation;
+                        delHandler(el.id)
+                    }}
                 />
             </div>)}
         </div>
