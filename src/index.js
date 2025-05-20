@@ -9,6 +9,8 @@ import { BrowserRouter, HashRouter } from "react-router";
 import "./index.scss"
 import App from "./App";
 import {Provider} from "./context"
+import { Provider as ReduxProvider } from 'react-redux'
+import store from "./store";
 /*
     "Мои питомцы"
     1) Научиться создавать компоненты с карточками
@@ -20,8 +22,10 @@ import {Provider} from "./context"
 */
 
 const root = createRoot(document.getElementById("root"));
-root.render(<BrowserRouter>
-    <Provider>
-        <App/>
-    </Provider>
-</BrowserRouter>)
+root.render(<ReduxProvider store={store}>
+    <BrowserRouter>
+        <Provider>
+            <App/>
+        </Provider>
+    </BrowserRouter>
+</ReduxProvider>)

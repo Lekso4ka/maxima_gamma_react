@@ -9,6 +9,8 @@ import {
     FormControl, FormSelect, FormCheck, Button
 } from "react-bootstrap"
 import Ctx from "../context";
+import { useDispatch } from "react-redux";
+import { addPet } from "../store/Pets";
 
 /*
       "type": "собака / кошка / хомяк / попугай / лошадь / змея",
@@ -29,6 +31,8 @@ export const Form = () => {
     const {api} = useContext(Ctx)
     const navigate = useNavigate()
 
+    const dispatch = useDispatch()
+
 
     const updVal = (key, val) => {
         setBody(prev => ({...prev, [key]: val}))
@@ -36,12 +40,16 @@ export const Form = () => {
 
     const formHandler = (e) => {
         e.preventDefault()
-        console.log(body)
         api.addPet(body)
-            .then(data => {
-                if (data.msg) {
-                    alert(data.msg)
+            .then(({data, msg}) => {
+                if (msg) {
+                    alert(msg)
                 } else {
+                    if (data.length) {
+                        const obj = JSON.parse(JSON.stringify(body))
+                        obj.id = data[0].id
+                        dispatch(addPet(obj))
+                    }
                     navigate("/")
                 }
             })

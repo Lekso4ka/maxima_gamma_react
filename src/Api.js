@@ -39,6 +39,15 @@ class Api {
         })
         .then(res => res.json())
     }
+    delPet(id) {
+        return fetch(`${this.path}/pets/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${this.token}`
+            },
+        })
+        .then(res => res.json())
+    }
     showPet(id) {
 
     }

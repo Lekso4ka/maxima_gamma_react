@@ -1,6 +1,9 @@
 import React, {useState, useEffect, useContext} from "react";
 import "./style.scss";
 import Ctx from "../../context";
+import { useSelector, useDispatch } from "react-redux";
+
+import {initPets, delPet} from "../../store/Pets";
 
 let store = localStorage.getItem("pets");
 if (!store) {
@@ -14,39 +17,40 @@ if (!store) {
 export const Pets = () => {
     const [name, setName] = useState("");
     // const [arr, setArr] = useState(store);
-    const [pets, setPets] = useState(null)
-    const {api} = useContext(Ctx)
+    const {pets} = useSelector(state => state.pets)
+    const {api, setUser, setToken} = useContext(Ctx)
+    const dispatch = useDispatch();
 
+    useEffect(() => {
+        console.log(pets)
+    }, [pets])
     
 
     useEffect(() => {
-        if (api) {
+        if (api && !pets.length) {
             api.getPets()
-                .then(({data})=> {
-                    setPets(data);
+                .then(({data, msg})=> {
+                    if (msg === "Необходима повторная авторизация") {
+                        setUser(null);
+                        setToken(null);
+                        localStorage.clear()
+                    } else {
+                        if (data) {
+                            dispatch(initPets(data))
+                        }
+                    }
                 })
         }
-    }, [api])
+    }, [api, pets])
 
-    const addHandler = () => {
-        // let pets = arr
-        // pets.push(name)
-        // setArr(pets)
-        setArr((prev) => {
-            prev.push(name)
-            // localStorage.setItem("pets", JSON.stringify(prev))
-            return prev;
-        })
 
-        setName("")
-    }
-
-    const delHandler = (index) => {
-        setPets((prev) => {
-            const newArr = prev.filter((el, i) => i !== index)
-            localStorage.setItem("pets", JSON.stringify(newArr))
-            return newArr;
-        })
+    const delHandler = (id) => {
+        api.delPet(id)
+            .then((d) => {
+                if (!d.err) {
+                dispatch(delPet(id))
+                }
+            })
     }
 
     return <div className="pets-wrapper">
